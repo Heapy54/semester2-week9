@@ -31,7 +31,7 @@ Stack *createStack( void ) {
  */
 void enlargeStack( Stack *stack ) {
     stack->size += stack->blockSize;
-    stack->data = realloc(stack->data,stack->size); // allocate a further 'block' to the stack to increase size
+    stack->data = realloc(stack->data,stack->size * sizeof(Data*)); // allocate a further 'block' to the stack to increase size
     return;
 }
 

@@ -34,13 +34,17 @@ void push( Stack *stack, int val ) {
  * pop - return the Node item on top of the stack
  */
 Node *pop( Stack *stack ) {
-    if( stack->size == 0 )           // check if stack is already empty
+    if( stack->size == 0 ) {        // check if stack is already empty
         return NULL;
+    }
 
     Node *node = stack->top;
     
+    
     stack->top = node->next;         // move stack top
     stack->size--;                   // decrease stack size
+
+    freeNode(node);
 
     return node;
 }
