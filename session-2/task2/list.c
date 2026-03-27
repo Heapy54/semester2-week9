@@ -60,19 +60,32 @@ void insert( List *list, Data *new, int loc ) {
  * remove the front Data item from the List
  */
 Data *delete( List *list, int loc ) {
-    Data *new = NULL;
+    Data *item = NULL;
     
     // check for empty List
+    if(list->length == 0){
+        printf("List is empty\n");
+        return;
+    }
 
     // check for invalid loc
+    if(loc < 0 || loc > list->length){
+        printf("Enter valid index postion\n");
+        return;
+    }
 
     // extract Data item
+    item = list->data[loc];
+
+    
+
+
     
     // shuffle list down to remove the gap
 
     // decrease list length
 
-    return new;
+    return item;
 }
 
 /*
@@ -90,7 +103,7 @@ void displayList ( List *list ) {
  * free dynamic array data
  */
 void freeList( List *list ) {
-    for( int k=0; k<list->size; ++k )
+    for( int k=0; k<list->length; ++k )
         free( list->data[k] ); // free List Data item
     free( list->data );        // free List Data array
     return;

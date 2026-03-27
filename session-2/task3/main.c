@@ -23,7 +23,15 @@ int main( void ) {
     tree->size = 6;
 
     // traverse to print node data
+    printf("Pre-Order\n");
     traversePre( tree->root );
+
+    printf("Post-Order\n");
+    traversePost(tree->root);
+
+    printf("In-Order\n");
+    traverseIn(tree->root);
+
 
     // free memory
     deallocateTree( tree->root );

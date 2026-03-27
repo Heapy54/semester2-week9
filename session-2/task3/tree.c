@@ -63,30 +63,38 @@ void traversePre( Node *loc ) {
  * recursive traversal in postorder
  */
 void traversePost( Node *loc ) {
-    
-    // implement here
-
+    if( loc != NULL ) {
+        traversePost( loc->child[0] );
+        traversePost( loc->child[1] );
+        printf(" Node %d\n", loc->data->value);
+    }
     return;
 }
-
 /*
  * recursive traversal in inorder
  */
 void traverseIn( Node *loc ) {
-    
-    // implement here
-
+    if( loc != NULL ) {
+        traverseIn( loc->child[0] );
+        printf(" Node %d\n", loc->data->value);
+        traverseIn( loc->child[1] );
+    }
     return;
 }
+
 
 /*
  * deallocate tree nodes using postorder traversal
  */
 void deallocateTree( Node *loc ) {
-    
-    // implement here 
-    // - based on postorder traversal
-    // - free() rather than printf()
-    
+    if( loc != NULL ) {
+        traversePost( loc->child[0] );
+        traversePost( loc->child[1] );
+         // Free the data inside the node
+        free(loc->data);
+
+        // Finally, free the node itself
+        free(loc);
+    }
     return;
 }
